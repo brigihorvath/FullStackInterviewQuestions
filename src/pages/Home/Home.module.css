@@ -1,0 +1,29 @@
+.mainBgrImg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  background-image: url(../../assets/images/kari-shea-1SAnrIxw5OY-unsplash.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  font-family: 'Nova Mono', monospace;
+}
+
+.mainHeader {
+  font-size: 4em;
+  background-color: rgba(44, 43, 43, 0.5);
+  padding: 3px 20px;
+}
+
+.mainBgrImg p {
+  font-size: 2em;
+  background-color: rgba(44, 43, 43, 0.5);
+  padding: 3px 20px;
+}
+
+.btnContainer {
+  display: flex;
+}

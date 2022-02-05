@@ -1,0 +1,22 @@
+.questionContainer {
+  margin: 10px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: rgba(236, 237, 240, 0.3);
+  border: 0.1px solid rgba(146, 144, 144, 0.1);
+  border-radius: 5px;
+}
+
+.statistics {
+  display: flex;
+}
+
+.question {
+  flex: 1;
+  /* text-align: center; */
+  font-size: 18px;
+  color: rgb(43, 42, 42);
+}

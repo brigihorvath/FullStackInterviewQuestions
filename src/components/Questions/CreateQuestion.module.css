@@ -1,0 +1,8 @@
+.container {
+  max-width: 80%;
+}
+
+.questionForm {
+  display: flex;
+  flex-direction: column;
+}

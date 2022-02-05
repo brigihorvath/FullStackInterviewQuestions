@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+// import { Fragment } from 'react';
+// import { Switch, Route } from 'react-router-dom';
+
 import './App.css';
+// import zenbook from '../src/assets/images/zenbook.jpg';
+// import Header from './components/Header';
+// import QuestionList from './components/Questions/QuestionList';
+// import CreateQuestion from './components/Questions/CreateQuestion';
+// import ReadOnlyEditor from './components/Questions/ReadOnlyEditor';
+import { AppRouter } from './router';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Fragment>
+    //   <Header />
+    //   <Switch>
+    //     <Route path="/" exact>
+    //       <div className="main-bgr-img">
+    //         <h1 className="main-header">JavaScript Interview Questions</h1>
+    //         <p>Learn, write answers, evaluate others answers...</p>
+    //       </div>
+    //       <QuestionList />
+    //       {/* <ReadOnlyEditor /> */}
+    //     </Route>
+    //     <Route path="/create-question" exact>
+    //       <CreateQuestion />
+    //     </Route>
+    //   </Switch>
+    // </Fragment>
+
+    <AppRouter />
   );
 }
 

@@ -1,0 +1,11 @@
+.questionsContainer {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  padding: 10px 20px;
+}
+
+/* .questionHeader {
+}
+
+.questionButton {
+} */

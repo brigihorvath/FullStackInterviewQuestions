@@ -1,0 +1,29 @@
+.mainText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1400px;
+  max-width: 90%;
+  margin: 50px auto;
+  font-family: 'Nova Mono', monospace;
+}
+
+.mainTextHeading {
+  font-size: 40px;
+  max-width: 70%;
+  text-align: center;
+}
+
+.mainText p {
+  font-size: 20px;
+  text-align: center;
+}
+
+.mainText p:first-of-type {
+  margin-top: 30px;
+}
+
+.mainText h3 {
+  font-size: 30px;
+}

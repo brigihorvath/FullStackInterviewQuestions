@@ -1,0 +1,14 @@
+.footer {
+  margin-top: 100px;
+  width: 100%;
+  background-color: rgb(37, 35, 35);
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  font-family: 'Nova Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  color: rgb(201, 193, 193);
+}

@@ -22,7 +22,6 @@ const SingleQuestion = () => {
     sendRequest(questionId);
   }, [sendRequest, questionId, reload]);
 
-  console.log(status, loadedQuestion, error);
   if (status === 'pending') {
     return (
       <div className="centered">

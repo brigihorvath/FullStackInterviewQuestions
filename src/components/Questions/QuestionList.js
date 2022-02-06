@@ -15,7 +15,7 @@ const QuestionList = (props) => {
 
   const questionArr = useEditor(questionList);
 
-  console.log(questionList);
+  // console.log(questionList);
 
   return (
     <Fragment>

@@ -27,7 +27,7 @@ const useEditor = (questionList) => {
 
     return (
       <Link to={`/questions/${draftText.id}`} key={draftText.id}>
-        <Question>
+        <Question id={draftText.id} isAnswer={draftText.isAnswer}>
           <Editor
             blockStyleFn={getBlockStyle}
             customStyleMap={styleMap}

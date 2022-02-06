@@ -10,7 +10,7 @@ import useEditor from '../../../hooks/useEditor';
 
 const AnswerList = (props) => {
   const answerList = props.answers.map((el) => {
-    return { question: el.answer, id: el._id };
+    return { question: el.answer, id: el._id, isAnswer: true };
   });
 
   const answerArr = useEditor(answerList);

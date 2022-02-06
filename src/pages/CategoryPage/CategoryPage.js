@@ -32,13 +32,13 @@ const CategoryPage = () => {
     return <div className="centered focused">{error}</div>;
   }
 
-  if (!loadedQuestions.length) {
+  if (!loadedQuestions.data.length) {
     return <p>No Questions found</p>;
   }
 
   return (
     <div style={{ paddingTop: '100px' }}>
-      <QuestionList questions={loadedQuestions} />
+      <QuestionList questions={loadedQuestions.data} />
     </div>
   );
 };

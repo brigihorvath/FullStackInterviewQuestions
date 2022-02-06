@@ -1,0 +1,13 @@
+.profileContainer {
+  width: 1200px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.profileContainer h2 {
+  color: rgb(44, 43, 44);
+}

@@ -1,9 +1,14 @@
 import axios from 'axios';
 
-const baseUrl = process.env.JS_QUESTIONS_API_URL;
-// const baseUrl = 'https://full-stack-interview-questions.herokuapp.com/api';
+// const baseUrl = process.env.REACT_APP_API_URL;
+// // const baseUrl = 'https://full-stack-interview-questions.herokuapp.com/api';
 
-const api = axios.create({ baseURL: baseUrl });
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true,
+});
+
+// const api = axios.create({ baseURL: baseUrl });
 
 export function getQuestions() {
   return api.get('/questions');
@@ -27,4 +32,34 @@ export function searchQuestion(query) {
 
 export function createQuestion(question) {
   return api.post('/questions/create-question', question);
+}
+
+export function addToFavourites(questionId) {
+  return api.post('/questions/favourites', questionId);
+}
+
+//////// AUTHENTICATION
+
+export function login(credentials) {
+  return api.post('/login', credentials);
+}
+
+export function signup(credentials) {
+  return api.post('/signup', credentials);
+}
+
+export function logout() {
+  return api.post('/logout');
+}
+
+export function isLoggedIn() {
+  return api.get('/login');
+}
+
+export function getFavourites() {
+  return api.get('/questions/favourites');
+}
+
+export function getUserData(userId) {
+  return api.get(`/users/${userId}`);
 }

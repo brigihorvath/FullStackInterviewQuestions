@@ -9,14 +9,35 @@ import { Home } from '../pages/Home';
 import { AllQuestions } from '../pages/AllQuestions';
 import { SingleQuestion } from '../pages/SingleQuestion';
 import { Credits } from '../pages/Credits';
+import AppRoute from './AppRoute';
+import GuestRoute from './GuestRoute';
+import { Auth } from '../pages/Auth';
+import { UserProfile } from '../pages/UserProfile';
+import { FavouriteQuestions } from '../pages/FavouriteQuestions';
+import { UserQuestions } from '../pages/UserQuestions';
 
 function AppRouter() {
   return (
     <Layout>
       <Switch>
-        <Route path={ROUTES.newQuestion}>
+        <GuestRoute path="/login" exact>
+          <Auth isLogin={true} />
+        </GuestRoute>
+        <GuestRoute path="/signup" exact>
+          <Auth />
+        </GuestRoute>
+        <AppRoute exact path="/profile">
+          <UserProfile />
+        </AppRoute>
+        <AppRoute exact path="/questions/favourites">
+          <FavouriteQuestions />
+        </AppRoute>
+        <AppRoute exact path="/questions/user-questions">
+          <UserQuestions />
+        </AppRoute>
+        <AppRoute path={ROUTES.newQuestion}>
           <NewQuestion />
-        </Route>
+        </AppRoute>
         <Route path={ROUTES.questionCategory}>
           <CategoryPage />
         </Route>

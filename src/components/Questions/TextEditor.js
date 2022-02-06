@@ -50,13 +50,18 @@ class TextEditor extends React.Component {
         const content = JSON.stringify(
           convertToRaw(this.state.editorState.getCurrentContent())
         );
-        const baseUrl = 'http://localhost:8080/api';
+        // const baseUrl = 'http://localhost:8080/api';
         // const baseUrl = 'https://full-stack-interview-questions.herokuapp.com/api';
         const url = this.props.question
-          ? `${baseUrl}/questions/create-question`
-          : `${baseUrl}/answers/create-answer?questionId=${this.props.questionId}`;
+          ? `/questions/create-question`
+          : `/answers/create-answer?questionId=${this.props.questionId}`;
 
-        const response = await axios.post(url, {
+        const api = axios.create({
+          baseURL: process.env.REACT_APP_API_URL,
+          withCredentials: true,
+        });
+
+        const response = await api.post(url, {
           content,
           category: this.state.selectOptions,
         });
@@ -215,6 +220,9 @@ class TextEditor extends React.Component {
                 value={this.state.selectOptions}
               >
                 <option value="Basics">Basics</option>
+                <option value="Number">Number</option>
+                <option value="Strings">Strings</option>
+                <option value="Date">Date</option>
                 <option value="OOP">OOP</option>
                 <option value="Closures">Closures</option>
                 <option value="Arrays">Arrays</option>

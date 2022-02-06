@@ -31,7 +31,7 @@ const AllQuestions = () => {
   if (!loadedQuestions) {
     return <p>No Questions found</p>;
   }
-  console.log(loadedQuestions.data);
+  //   console.log(loadedQuestions.data);
 
   return (
     <div>

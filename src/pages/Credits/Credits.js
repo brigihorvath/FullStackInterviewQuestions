@@ -1,9 +1,10 @@
-import TitleHeader from '../../components/UI/TitleHeader/TitleHeader';
+// import TitleHeader from '../../components/UI/TitleHeader/TitleHeader';
+import { HeaderImage } from '../../components/UI/HeaderImage';
 
 const Credits = () => {
   return (
     <div>
-      <TitleHeader title="Credits" />
+      <HeaderImage title="Credits" />
 
       <p>
         <a href="https://unsplash.com/@karishea">Kari Shea - Unsplash</a>

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div>
+    <div className={classes.homePage}>
       <div className={classes.mainBgrImg}>
         <h1 className={classes.mainHeader}>JavaScript Interview Questions</h1>
         <p>Learn, write answers, evaluate others answers...</p>

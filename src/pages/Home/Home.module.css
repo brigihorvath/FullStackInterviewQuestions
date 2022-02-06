@@ -1,3 +1,7 @@
+.homePage {
+  margin-top: -100px;
+}
+
 .mainBgrImg {
   display: flex;
   flex-direction: column;

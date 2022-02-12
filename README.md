@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# JavaScript Interview Questions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+A react application to create and search JavaScript interview questions.
 
-In the project directory, you can run:
+## User Stories
 
-### `npm start`
+- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
+- **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
+- **homepage** - As a user I want to be able to access the homepage and see the categories of the questions, login and signup
+- **sign up** - As a user I want to sign up on the webpage so that I can see all the tours available
+- **login** - As a user I want to be able to log in on the webpage so that I can get back to my account
+- **logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
+- **questions** - As a user I want to see a list of all the questions from the database
+- **question details** - As a user I want to see the answers to the question that I was clicking on and be able to add an aswer
+- **create question** - As a user I want to be able to create new questions
+- **profile** - As a user I want to see all the tours that I selected
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Backlog
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Search questions
+- Upvote - Downvote answers
+- User profile image upload
+- Quiz feature
+- User points
+- Answer points
 
-### `npm test`
+## Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Trello
 
-### `npm run build`
+[Link to your trello board](https://trello.com/b/dhB1yjRG/javascript-interview-questions)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The url to the repository and the your deployed project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Repository Link](https://github.com/brigihorvath/FullStackInterviewQuestions)
 
-### `npm run eject`
+[Deploy Link](...)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Slides
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The url to your presentation slides
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Slides Link](...)

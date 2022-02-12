@@ -5,9 +5,13 @@
   justify-content: center;
   align-items: center;
   width: 80%;
-  background-color: rgba(236, 237, 240, 0.3);
-  border: 0.1px solid rgba(146, 144, 144, 0.1);
+  background-color: rgba(211, 212, 214, 0.3);
+  border: 1px solid rgba(146, 144, 144, 0.1);
   border-radius: 5px;
+}
+
+.questionContainer:hover {
+  transform: scale(1.02);
 }
 
 .statistics {

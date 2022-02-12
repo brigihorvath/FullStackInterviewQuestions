@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getQuestionId } from '../../api';
 import useHttp from '../../hooks/use-http';
+import classes from './SingleQuestion.module.css';
 
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner';
 import QuestionList from '../../components/Questions/QuestionList';
 import { CreateAnswer } from '../../components/Answers/CreateAnswer/index.js';
 import { AnswerList } from '../../components/Answers/AnswerList';
+import { HeaderImage } from '../../components/UI/HeaderImage';
 
 const SingleQuestion = () => {
   const [reload, setReload] = useState(false);
@@ -51,11 +53,14 @@ const SingleQuestion = () => {
   };
 
   return (
-    <div style={{ paddingTop: '100px' }}>
-      <QuestionList questions={[loadedQuestion.data]} />
-      <h2>Answers</h2>
-      {answerList}
-      <CreateAnswer questionId={questionId} updatePage={reloadPage} />
+    <div>
+      <HeaderImage title={'Question'} />
+      <div className={classes.singleQuestionContainer}>
+        <QuestionList questions={[loadedQuestion.data]} />
+        <h2 className={classes.singleQuestionHeading}>Answers</h2>
+        {answerList}
+        <CreateAnswer questionId={questionId} updatePage={reloadPage} />
+      </div>
     </div>
   );
 };

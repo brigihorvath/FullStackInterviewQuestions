@@ -3,6 +3,7 @@ import { getQuestions } from '../../api';
 import { useEffect } from 'react';
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner';
 import QuestionList from '../../components/Questions/QuestionList';
+import { HeaderImage } from '../../components/UI/HeaderImage';
 
 const AllQuestions = () => {
   const {
@@ -35,6 +36,8 @@ const AllQuestions = () => {
 
   return (
     <div>
+      <HeaderImage title={'All questions'} />
+
       <QuestionList questions={loadedQuestions.data} />
     </div>
   );

@@ -1,4 +1,6 @@
 // import QuestionList from '../../components/Questions/QuestionList';
+import { useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext/AuthContext';
 import CategoryList from '../../components/Categories/CategoryList/CategoryList';
 import Button from '../../components/UI/Button';
 import { MainText } from '../../components/Texts/MainText';
@@ -8,6 +10,11 @@ import classes from './Home.module.css';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const { getLoggedInUserData } = useAuth();
+  useEffect(() => {
+    getLoggedInUserData();
+  }, [getLoggedInUserData]);
+
   return (
     <div className={classes.homePage}>
       <div className={classes.mainBgrImg}>

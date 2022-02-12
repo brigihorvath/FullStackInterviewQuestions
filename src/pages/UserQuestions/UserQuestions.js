@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext/AuthContext';
 
-import classes from './UserQuestions.module.css';
+// import classes from './UserQuestions.module.css';
 
 import { HeaderImage } from '../../components/UI/HeaderImage';
 import QuestionList from '../../components/Questions/QuestionList';

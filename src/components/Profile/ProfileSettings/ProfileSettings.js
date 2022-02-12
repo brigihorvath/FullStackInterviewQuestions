@@ -1,24 +1,45 @@
 import { useState } from 'react';
+// import { useAuth } from '../../../context/AuthContext/AuthContext';
 import classes from './ProfileSettings.module.css';
 import Button from '../../UI/Button';
+import { updateUser } from '../../../api';
 
 const ProfileSettings = (props) => {
-  console.log('userDetails:', props.userDetails);
   const [inputState, setInputState] = useState({
-    username: props.userDetails.user.username
+    username: props.userDetails?.user?.username
       ? props.userDetails.user.username
       : 'Ironhacker',
-    email: props.userDetails.user.email,
+    email: props.userDetails?.user?.email
+      ? props.userDetails?.user?.email
+      : 'Email',
   });
+
+  // useEffect(() => {
+  //   setInputState({
+  //     username: props.userDetails?.user?.username
+  //       ? props.userDetails.user.username
+  //       : 'Ironhacker',
+  //     email: props.userDetails?.user?.email
+  //       ? props.userDetails?.user?.email
+  //       : 'Email',
+  //   });
+  // }, []);
+
   const inputChangeHandler = ({ target }) => {
     setInputState((inputState) => {
       return { ...inputState, [target.name]: target.value };
     });
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     console.log(inputState);
+    try {
+      const { data } = await updateUser(inputState);
+      console.log(data);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   return (
     <div className={classes.profileSettings}>

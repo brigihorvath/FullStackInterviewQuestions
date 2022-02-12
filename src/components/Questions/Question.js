@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import classes from './Question.module.css';
 import Button from '../UI/Button';
 import { LoadingSpinner } from '../UI/LoadingSpinner';
 import { addToFavourites } from '../../api';
-import { getFavourites } from '../../api';
+// import { getFavourites } from '../../api';
 import useHttp from '../../hooks/use-http';
+import { useAuth } from '../../context/AuthContext/AuthContext';
 
 const Question = (props) => {
   const {
@@ -13,18 +14,34 @@ const Question = (props) => {
     // data: loadedQuestion,
     error,
   } = useHttp(addToFavourites, false);
-  const [isQuestionFav, setIsQuestionFav] = useState(false);
+  // const [isQuestionFav, setIsQuestionFav] = useState(false);
+
+  const { getLoggedInUserData, userDetails } = useAuth();
 
   useEffect(() => {
-    async function getFavArr() {
-      const favArr = await getFavourites();
-      if (favArr.data.data.content.favourites.includes(props.id)) {
-        setIsQuestionFav(true);
-      }
-      // console.log(favArr.data.data.content.favourites);
-    }
-    getFavArr();
-  }, [props.id]);
+    getLoggedInUserData();
+  }, [getLoggedInUserData]);
+  // console.log(userDetails.user.favourites);
+
+  let isQuestionFav = false;
+  if (
+    userDetails?.user?.favourites?.filter((el) => el._id === props.id).length
+  ) {
+    console.log('true');
+    // setIsQuestionFav(true);
+    isQuestionFav = true;
+  }
+
+  // useEffect(() => {
+  //   async function getFavArr() {
+  //     const favArr = await getFavourites();
+  //     if (favArr.data.data.content.favourites.includes(props.id)) {
+  //       setIsQuestionFav(true);
+  //     }
+  //     // console.log(favArr.data.data.content.favourites);
+  //   }
+  //   getFavArr();
+  // }, [props.id]);
 
   if (status === 'pending') {
     return (

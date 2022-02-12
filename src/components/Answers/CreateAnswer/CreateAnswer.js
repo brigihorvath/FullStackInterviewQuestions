@@ -1,16 +1,22 @@
 import TextEditor from '../../Questions/TextEditor';
+import { useAuth } from '../../../context/AuthContext/AuthContext';
+import classes from './CreateAnswer.module.css'; //
 
-const createAnswer = (props) => {
+const CreateAnswer = (props) => {
+  const { user } = useAuth();
+  console.log(user);
   return (
-    <div>
-      <h2>Create an answer</h2>
-      <TextEditor
-        question={false}
-        questionId={props.questionId}
-        reloadPage={props.updatePage}
-      />
+    <div className={classes.createAnswerContainer}>
+      <h2>{user ? 'Create an answer' : 'Log in to create an answer'}</h2>
+      {user && (
+        <TextEditor
+          question={false}
+          questionId={props.questionId}
+          reloadPage={props.updatePage}
+        />
+      )}
     </div>
   );
 };
 
-export default createAnswer;
+export default CreateAnswer;

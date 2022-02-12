@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import classes from './AuthForm.module.css';
 
 function AuthForm({ onSubmit, submitMessage }) {
-  const [state, setState] = React.useState({ email: "", password: "" });
+  const [state, setState] = React.useState({ email: '', password: '' });
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -12,10 +13,11 @@ function AuthForm({ onSubmit, submitMessage }) {
     onSubmit(state);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={classes.loginForm}>
       <label htmlFor="email">Email</label>
       <input
         required
+        className={classes.loginInput}
         name="email"
         type="email"
         value={state.email}
@@ -24,12 +26,15 @@ function AuthForm({ onSubmit, submitMessage }) {
       <label htmlFor="password">Password</label>
       <input
         required
+        className={classes.loginInput}
         name="password"
         type="password"
         value={state.password}
         onChange={handleChange}
       />
-      <button type="submit">{submitMessage}</button>
+      <button type="submit" className={classes.loginBtn}>
+        {submitMessage}
+      </button>
     </form>
   );
 }

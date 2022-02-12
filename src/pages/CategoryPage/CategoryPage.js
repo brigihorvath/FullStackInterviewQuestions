@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner';
 import QuestionList from '../../components/Questions/QuestionList';
+import { HeaderImage } from '../../components/UI/HeaderImage';
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -33,11 +34,17 @@ const CategoryPage = () => {
   }
 
   if (!loadedQuestions.data.length) {
-    return <p>No Questions found</p>;
+    return (
+      <div>
+        <HeaderImage title={category} />
+        <p>No Questions found</p>
+      </div>
+    );
   }
 
   return (
-    <div style={{ paddingTop: '100px' }}>
+    <div>
+      <HeaderImage title={category} />
       <QuestionList questions={loadedQuestions.data} />
     </div>
   );

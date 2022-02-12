@@ -2,6 +2,7 @@
 
 import TextEditor from './TextEditor';
 import classes from './CreateQuestion.module.css';
+import { useAuth } from '../../context/AuthContext/AuthContext';
 
 const CreateQuestion = () => {
   // const [question, setQuestion] = useState({ question: '', answer: '' });

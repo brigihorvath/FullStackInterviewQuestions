@@ -63,3 +63,7 @@ export function getFavourites() {
 export function getUserData(userId) {
   return api.get(`/users/${userId}`);
 }
+
+export function updateUser(credentials) {
+  return api.post('/users/update', credentials);
+}

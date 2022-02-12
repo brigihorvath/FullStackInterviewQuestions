@@ -17,6 +17,22 @@ function saveSessionUser(user) {
   sessionStorage.setItem('user', JSON.stringify(user));
 }
 
+function getSessionUserDetails() {
+  const rawUser = sessionStorage.getItem('userDetails');
+  if (rawUser) {
+    return JSON.parse(rawUser);
+  }
+  return null;
+}
+
+function removeUserDetails() {
+  sessionStorage.removeItem('userDetails');
+}
+
+function saveSessionUserDetails(userDetails) {
+  sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
+}
+
 // create an auth context object
 export const AuthCtx = React.createContext();
 
@@ -24,7 +40,7 @@ function AuthProvider({ children }) {
   const [auth, setAuth] = React.useState({ user: getSessionUser() });
   const [error, setError] = React.useState(null);
   const [userDetails, setUserDetails] = React.useState({
-    user: getSessionUser(),
+    user: getSessionUserDetails(),
   });
   // wrap the children inside the context provider
 
@@ -32,8 +48,10 @@ function AuthProvider({ children }) {
     try {
       const { data } = await login(credentials);
       saveSessionUser(data);
-      console.log(data);
       setAuth({ user: data });
+      const response = await getUserData(data._id);
+      setUserDetails({ user: response.data });
+      saveSessionUserDetails(response.data);
     } catch (err) {
       setError(err.response.data);
       setAuth({ user: null });
@@ -45,6 +63,9 @@ function AuthProvider({ children }) {
       const { data } = await signup(credentials);
       saveSessionUser(data);
       setAuth({ user: data });
+      const response = await getUserData(data._id);
+      setUserDetails({ user: response.data });
+      saveSessionUserDetails(response.data);
     } catch (err) {
       setError(err.response.data);
       setAuth({ user: null });
@@ -55,10 +76,12 @@ function AuthProvider({ children }) {
     try {
       await logout();
       removeUser();
+      removeUserDetails();
     } catch (err) {
       setError(err.response.data);
     } finally {
       setAuth({ user: null });
+      setUserDetails({ user: null });
     }
   };
 
@@ -68,11 +91,17 @@ function AuthProvider({ children }) {
         const userId = auth.user._id;
         const { data } = await getUserData(userId);
         setUserDetails({ user: data });
+        saveSessionUserDetails(data);
       }
     } catch (err) {
       setError(err?.response?.data);
     }
   }, [auth?.user?._id]);
+
+  const userDetailsHandler = (user) => {
+    setUserDetails(user);
+    saveSessionUserDetails({ ...user, password: null });
+  };
 
   // const handleIsLoggedIn = async () => {
   //   try {
@@ -100,6 +129,7 @@ function AuthProvider({ children }) {
         error,
         getLoggedInUserData,
         userDetails,
+        userDetailsHandler,
       }}
     >
       {children}

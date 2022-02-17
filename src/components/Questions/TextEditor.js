@@ -79,7 +79,7 @@ class TextEditor extends React.Component {
           this.props.reloadPage();
         }
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
     };
     sendData();

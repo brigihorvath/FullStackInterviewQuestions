@@ -9,10 +9,10 @@ const useEditor = (questionList) => {
 
     const styleMap = {
       CODE: {
-        backgroundColor: 'rgba(0, 0, 0, 0.05)',
+        backgroundColor: 'rgba(100, 100, 100, 0.05)',
         fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-        fontSize: 16,
-        padding: 2,
+        fontSize: 12,
+        padding: 5,
       },
     };
 
@@ -33,7 +33,7 @@ const useEditor = (questionList) => {
             customStyleMap={styleMap}
             editorState={editorState}
             readOnly={true}
-            placeholder="Tell a story..."
+            placeholder="You can write below here.."
             spellCheck={true}
           />
         </Question>

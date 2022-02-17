@@ -221,11 +221,15 @@ class TextEditor extends React.Component {
               >
                 <option value="Basics">Basics</option>
                 <option value="Number">Number</option>
+                <option value="Functions">Functions</option>
+                <option value="Variables">Variables</option>
                 <option value="Strings">Strings</option>
                 <option value="Date">Date</option>
                 <option value="OOP">OOP</option>
                 <option value="Closures">Closures</option>
                 <option value="Arrays">Arrays</option>
+                <option value="DOM">DOM</option>
+                <option value="Promises">Promises</option>
               </select>
             </div>
           )}

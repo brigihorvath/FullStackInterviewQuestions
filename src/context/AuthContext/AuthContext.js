@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { logout, login, signup, getUserData } from '../../api';
+import { logout, login, signup, getUserData, isLoggedIn } from '../../api';
 
 function getSessionUser() {
   const rawUser = sessionStorage.getItem('user');
@@ -98,26 +98,30 @@ function AuthProvider({ children }) {
     }
   }, [auth?.user?._id]);
 
+  // React.useEffect(() => {
+  //   getLoggedInUserData();
+  // }, [getLoggedInUserData]);
+
   const userDetailsHandler = (user) => {
     setUserDetails(user);
     saveSessionUserDetails({ ...user, password: null });
   };
 
-  // const handleIsLoggedIn = async () => {
-  //   try {
-  //     if (!auth.user) {
-  //       const { data } = await isLoggedIn();
-  //       setAuth({ user: data });
-  //       saveSessionUser(data);
-  //     }
-  //   } catch (err) {
-  //     setAuth({ user: null });
-  //   }
-  // };
+  const handleIsLoggedIn = useCallback(async () => {
+    try {
+      if (!auth?.user?._id) {
+        const { data } = await isLoggedIn();
+        setAuth({ user: data });
+        saveSessionUser(data);
+      }
+    } catch (err) {
+      setAuth({ user: null });
+    }
+  }, [auth?.user?._id]);
 
-  // React.useEffect(() => {
-  //   handleIsLoggedIn();
-  // }, []);
+  React.useEffect(() => {
+    handleIsLoggedIn();
+  }, [handleIsLoggedIn]);
 
   return (
     <AuthCtx.Provider

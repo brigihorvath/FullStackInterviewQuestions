@@ -1,21 +1,17 @@
-// import { useEffect, useState } from 'react';
+import { useAuth } from '../../../context/AuthContext/AuthContext';
 import classes from './ProfileHeader.module.css';
 
-const ProfileHeader = (props) => {
-  console.log(props.userDetails);
-  // const [title, setTitle] = useState('Ironhacker');
-  // useEffect(() => {
-  //   setTitle(props.userDetails?.user?.username);
-  // }, [props.userDetails?.user?.username]);
+const ProfileHeader = () => {
+  const { userDetails } = useAuth();
+  console.log(userDetails);
   return (
     <div className={classes.profileHeader}>
-      {/* <h1>
+      <h1>
         Hello{' '}
-        {props.userDetails?.user?.username
-          ? props.userDetails.user.username
+        {userDetails?.user?.username
+          ? userDetails?.user?.username
           : 'Ironhacker'}
-      </h1> */}
-      <h1>Hello Ironhacker</h1>
+      </h1>
     </div>
   );
 };

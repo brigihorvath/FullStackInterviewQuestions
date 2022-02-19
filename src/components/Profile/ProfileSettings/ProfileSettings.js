@@ -1,18 +1,29 @@
 import { useState } from 'react';
-// import { useAuth } from '../../../context/AuthContext/AuthContext';
+import { useAuth } from '../../../context/AuthContext/AuthContext';
 import classes from './ProfileSettings.module.css';
 import Button from '../../UI/Button';
 import { updateUser } from '../../../api';
 
 const ProfileSettings = (props) => {
+  const { getLoggedInUserData, userDetails } = useAuth();
+  console.log(userDetails);
   const [inputState, setInputState] = useState({
-    username: props.userDetails?.user?.username
-      ? props.userDetails.user.username
+    username: userDetails?.user?.username
+      ? userDetails.user.username
       : 'Ironhacker',
-    email: props.userDetails?.user?.email
-      ? props.userDetails?.user?.email
-      : 'Email',
+    email: userDetails?.user?.email ? userDetails?.user?.email : 'Email',
   });
+  // useEffect(() => {
+  //   getLoggedInUserData();
+  // }, [getLoggedInUserData, inputState.username]);
+  // const [inputState, setInputState] = useState({
+  //   username: props.userDetails?.user?.username
+  //     ? props.userDetails.user.username
+  //     : 'Ironhacker',
+  //   email: props.userDetails?.user?.email
+  //     ? props.userDetails?.user?.email
+  //     : 'Email',
+  // });
 
   // useEffect(() => {
   //   setInputState({
@@ -34,8 +45,10 @@ const ProfileSettings = (props) => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     console.log(inputState);
+    console.log(userDetails);
     try {
       const { data } = await updateUser(inputState);
+      getLoggedInUserData();
       console.log(data);
     } catch (err) {
       console.log(err.message);

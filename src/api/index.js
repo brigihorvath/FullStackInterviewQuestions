@@ -38,6 +38,10 @@ export function addToFavourites(questionId) {
   return api.post('/questions/favourites', questionId);
 }
 
+export function removeFromFavourites(questionId) {
+  return api.post('/questions/removeFavourites', questionId);
+}
+
 //////// AUTHENTICATION
 
 export function login(credentials) {

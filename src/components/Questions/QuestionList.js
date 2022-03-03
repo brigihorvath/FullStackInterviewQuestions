@@ -20,9 +20,9 @@ const QuestionList = (props) => {
   return (
     <Fragment>
       <div className={classes.questionsContainer}>
-        <h2 className={classes.questionHeader}>
+        {/* <h2 className={classes.questionHeader}>
           {questionArr.length > 1 ? 'Questions' : 'Question'}
-        </h2>
+        </h2> */}
         {/* <Link to="/create-question">
           <Button cssStyle="blueButton" className={classes.questionButton}>
             Submit a Question

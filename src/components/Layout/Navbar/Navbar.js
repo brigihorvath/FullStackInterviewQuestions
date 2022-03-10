@@ -14,6 +14,9 @@ const Header = () => {
       <Link style={{ margin: '0 15px' }} to="/profile">
         My Account
       </Link>
+      <Link style={{ margin: '0 15px' }} to="/random-question">
+        Random Question
+      </Link>
       <Button onClick={handleLogout}>logout</Button>
       {/* <img
         src={profileImg}

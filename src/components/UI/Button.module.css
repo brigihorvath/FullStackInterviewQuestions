@@ -19,3 +19,8 @@
 .btn:active {
   transform: translateY(3px);
 }
+
+.centeredBtn {
+  display: block;
+  margin: 10px auto;
+}

@@ -8,6 +8,7 @@ import QuestionList from '../../components/Questions/QuestionList';
 import { CreateAnswer } from '../../components/Answers/CreateAnswer/index.js';
 import { AnswerList } from '../../components/Answers/AnswerList';
 import { HeaderImage } from '../../components/UI/HeaderImage';
+import Button from '../../components/UI/Button';
 
 const RandomQuestion = () => {
   const [reload, setReload] = useState(false);
@@ -54,6 +55,9 @@ const RandomQuestion = () => {
     <div>
       <HeaderImage title={'Random Question'} />
       <div className={classes.singleQuestionContainer}>
+        <Button onClick={reloadPage} cssStyle="centeredBtn">
+          Hit me with another question
+        </Button>
         <QuestionList questions={[loadedQuestion.data]} />
         <h2 className={classes.singleQuestionHeading}>Answers</h2>
         {answerList}

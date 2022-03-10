@@ -22,10 +22,6 @@ export function getQuestionCategory(category) {
   return api.get(`/questions/categories/${category}`);
 }
 
-export function getRandomQuestion() {
-  return api.get('/questions/random');
-}
-
 export function searchQuestion(query) {
   return api.get(`/questions/search?q=${query}`);
 }
@@ -42,6 +38,21 @@ export function removeFromFavourites(questionId) {
   return api.post('/questions/removeFavourites', questionId);
 }
 
+export function upvoteAnswer(answerId) {
+  return api.post(`/answers/upvote/${answerId}`);
+}
+
+export function downvoteAnswer(answerId) {
+  return api.post(`/answers/downvote/${answerId}`);
+}
+
+export function deleteQuestion(questionId) {
+  return api.post(`/questions/delete/${questionId}`);
+}
+
+export function getRandomQuestion() {
+  return api.get('/random-question');
+}
 //////// AUTHENTICATION
 
 export function login(credentials) {

@@ -1,13 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './Question.module.css';
 import Button from '../UI/Button';
 import { LoadingSpinner } from '../UI/LoadingSpinner';
-import { addToFavourites, removeFromFavourites } from '../../api';
+import VoteContainer from './VoteContainer';
+import { Redirect } from 'react-router-dom';
+
+import {
+  addToFavourites,
+  removeFromFavourites,
+  deleteQuestion,
+} from '../../api';
 // import { getFavourites } from '../../api';
 import useHttp from '../../hooks/use-http';
 import { useAuth } from '../../context/AuthContext/AuthContext';
 
 const Question = (props) => {
+  const [redirect, setRedirect] = useState(false);
   const { getLoggedInUserData, userDetails } = useAuth();
 
   let isQuestionFav = false;
@@ -22,6 +30,11 @@ const Question = (props) => {
     !isQuestionFav ? addToFavourites : removeFromFavourites,
     false
   );
+  const {
+    sendRequest: sendRemoveRequest,
+    status: removeStatus,
+    error: removeError,
+  } = useHttp(deleteQuestion, false);
 
   useEffect(() => {
     getLoggedInUserData();
@@ -51,16 +64,27 @@ const Question = (props) => {
     sendRequest({ questionId: questionId });
   };
 
-  const removeQuestionHandler = () => {
+  const removeQuestionHandler = async () => {
     console.log('props', props);
     console.log('user details', userDetails);
+    await sendRemoveRequest(questionId);
+    setRedirect(true);
   };
-
-  return (
-    <div className={classes.questionContainer}>
+  console.log(userDetails);
+  return redirect ? (
+    <Redirect to={'/questions'} />
+  ) : (
+    <div
+      className={`${classes.questionContainer} ${
+        props.isAnswer ? classes.answer : ''
+      }`}
+    >
+      {props.isAnswer && (
+        <VoteContainer answerId={questionId} votes={props.votes} />
+      )}
       <div className={classes.statistics}></div>
       <div className={classes.question}>{props.children}</div>
-      {!props.isAnswer && !isQuestionFav && (
+      {!props.isAnswer && !isQuestionFav && userDetails.user && (
         <Button onClick={addToFavouritesHandler}>Add to Favourites</Button>
       )}
       {!props.isAnswer && isQuestionFav && (
@@ -68,7 +92,7 @@ const Question = (props) => {
           Remove From Favourites
         </Button>
       )}
-      {userDetails?.user?.role === 'admin' && (
+      {userDetails?.user?.role === 'admin' && !props.isAnswer && (
         <Button onClick={removeQuestionHandler}>Remove Question</Button>
       )}
     </div>

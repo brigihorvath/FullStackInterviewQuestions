@@ -1,28 +1,26 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getQuestionId } from '../../api';
 import useHttp from '../../hooks/use-http';
-import classes from './SingleQuestion.module.css';
-
+import { getQuestions, getQuestionId, getRandomQuestion } from '../../api';
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner';
+import classes from '../SingleQuestion/SingleQuestion.module.css';
+
 import QuestionList from '../../components/Questions/QuestionList';
 import { CreateAnswer } from '../../components/Answers/CreateAnswer/index.js';
 import { AnswerList } from '../../components/Answers/AnswerList';
 import { HeaderImage } from '../../components/UI/HeaderImage';
 
-const SingleQuestion = () => {
+const RandomQuestion = () => {
   const [reload, setReload] = useState(false);
-  const { questionId } = useParams();
   const {
     sendRequest,
     status,
     data: loadedQuestion,
     error,
-  } = useHttp(getQuestionId, true);
+  } = useHttp(getRandomQuestion, true);
 
   useEffect(() => {
-    sendRequest(questionId);
-  }, [sendRequest, questionId, reload]);
+    sendRequest();
+  }, [sendRequest, reload]);
 
   if (status === 'pending') {
     return (
@@ -54,15 +52,18 @@ const SingleQuestion = () => {
 
   return (
     <div>
-      <HeaderImage title={'Question'} />
+      <HeaderImage title={'Random Question'} />
       <div className={classes.singleQuestionContainer}>
         <QuestionList questions={[loadedQuestion.data]} />
         <h2 className={classes.singleQuestionHeading}>Answers</h2>
         {answerList}
-        <CreateAnswer questionId={questionId} updatePage={reloadPage} />
+        <CreateAnswer
+          questionId={loadedQuestion.data._id}
+          updatePage={reloadPage}
+        />
       </div>
     </div>
   );
 };
 
-export default SingleQuestion;
+export default RandomQuestion;

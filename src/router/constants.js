@@ -5,4 +5,5 @@ export const ROUTES = {
   questionCategory: '/questions/categories/:category',
   newQuestion: '/create-question',
   credits: '/credits',
+  randomQuestion: '/random-question',
 };

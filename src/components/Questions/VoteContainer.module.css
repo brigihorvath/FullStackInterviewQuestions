@@ -1,0 +1,15 @@
+.voteContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.arrowIcon {
+  font-size: 30px;
+}
+
+.voteCount {
+  font-size: 18px;
+}

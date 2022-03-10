@@ -15,6 +15,7 @@ import { Auth } from '../pages/Auth';
 import { UserProfile } from '../pages/UserProfile';
 import { FavouriteQuestions } from '../pages/FavouriteQuestions';
 import { UserQuestions } from '../pages/UserQuestions';
+import { RandomQuestion } from '../pages/RandomQuestion';
 
 function AppRouter() {
   return (
@@ -49,6 +50,9 @@ function AppRouter() {
         </Route>
         <Route path={ROUTES.credits}>
           <Credits />
+        </Route>
+        <Route path={ROUTES.randomQuestion}>
+          <RandomQuestion />
         </Route>
         <Route exact path={ROUTES.root}>
           <Home />

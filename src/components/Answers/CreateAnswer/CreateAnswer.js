@@ -4,7 +4,6 @@ import classes from './CreateAnswer.module.css'; //
 
 const CreateAnswer = (props) => {
   const { user } = useAuth();
-  console.log(user);
   return (
     <div className={classes.createAnswerContainer}>
       <h2>{user ? 'Create an answer' : 'Log in to create an answer'}</h2>

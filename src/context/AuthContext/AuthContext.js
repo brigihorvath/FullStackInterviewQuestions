@@ -107,21 +107,21 @@ function AuthProvider({ children }) {
     saveSessionUserDetails({ ...user, password: null });
   };
 
-  const handleIsLoggedIn = useCallback(async () => {
-    try {
-      if (!auth?.user?._id) {
-        const { data } = await isLoggedIn();
-        setAuth({ user: data });
-        saveSessionUser(data);
-      }
-    } catch (err) {
-      setAuth({ user: null });
-    }
-  }, [auth?.user?._id]);
+  // const handleIsLoggedIn = useCallback(async () => {
+  //   try {
+  //     if (!auth?.user?._id) {
+  //       const { data } = await isLoggedIn();
+  //       setAuth({ user: data });
+  //       saveSessionUser(data);
+  //     }
+  //   } catch (err) {
+  //     setAuth({ user: null });
+  //   }
+  // }, [auth?.user?._id]);
 
-  React.useEffect(() => {
-    handleIsLoggedIn();
-  }, [handleIsLoggedIn]);
+  // React.useEffect(() => {
+  //   handleIsLoggedIn();
+  // }, [handleIsLoggedIn]);
 
   return (
     <AuthCtx.Provider

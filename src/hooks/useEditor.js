@@ -24,10 +24,16 @@ const useEditor = (questionList) => {
           return null;
       }
     }
-
     return (
-      <Link to={`/questions/${draftText.id}`} key={draftText.id}>
-        <Question id={draftText.id} isAnswer={draftText.isAnswer}>
+      <Link
+        to={!draftText.isAnswer ? `/questions/${draftText.id}` : '#'}
+        key={draftText.id}
+      >
+        <Question
+          id={draftText.id}
+          isAnswer={draftText.isAnswer}
+          votes={draftText.votes}
+        >
           <Editor
             blockStyleFn={getBlockStyle}
             customStyleMap={styleMap}

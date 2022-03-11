@@ -10,7 +10,7 @@ import classes from './QuestionList.module.css';
 
 const QuestionList = (props) => {
   const questionList = props.questions.map((el) => {
-    return { question: el.question, id: el._id };
+    return { question: el.question, id: el._id, likes: el.likes };
   });
 
   const questionArr = useEditor(questionList);

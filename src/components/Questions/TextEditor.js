@@ -10,6 +10,7 @@ import {
 } from 'draft-js';
 import './TextEditor.css';
 import axios from 'axios';
+import Button from '../UI/Button';
 
 class TextEditor extends React.Component {
   constructor(props) {
@@ -215,7 +216,7 @@ class TextEditor extends React.Component {
               <select
                 name="selectOptions"
                 id="categories"
-                multiple={true}
+                // multiple={true}
                 onChange={this.selectChange}
                 value={this.state.selectOptions}
               >
@@ -233,7 +234,7 @@ class TextEditor extends React.Component {
               </select>
             </div>
           )}
-          <button onClick={this.submitQuestionToDatabase}>Submit</button>
+          <Button onClick={this.submitQuestionToDatabase}>Submit</Button>
         </>
       );
     }

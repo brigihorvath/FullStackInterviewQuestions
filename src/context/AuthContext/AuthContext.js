@@ -98,9 +98,9 @@ function AuthProvider({ children }) {
     }
   }, [auth?.user?._id]);
 
-  // React.useEffect(() => {
-  //   getLoggedInUserData();
-  // }, [getLoggedInUserData]);
+  React.useEffect(() => {
+    getLoggedInUserData();
+  }, [getLoggedInUserData]);
 
   const userDetailsHandler = (user) => {
     setUserDetails(user);

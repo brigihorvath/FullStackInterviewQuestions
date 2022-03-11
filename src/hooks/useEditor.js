@@ -24,6 +24,7 @@ const useEditor = (questionList) => {
           return null;
       }
     }
+    console.log(draftText);
     return (
       <Link
         to={!draftText.isAnswer ? `/questions/${draftText.id}` : '#'}
@@ -33,6 +34,7 @@ const useEditor = (questionList) => {
           id={draftText.id}
           isAnswer={draftText.isAnswer}
           votes={draftText.votes}
+          likes={draftText.likes}
         >
           <Editor
             blockStyleFn={getBlockStyle}

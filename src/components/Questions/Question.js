@@ -4,6 +4,7 @@ import Button from '../UI/Button';
 import { LoadingSpinner } from '../UI/LoadingSpinner';
 import VoteContainer from './VoteContainer';
 import { Redirect } from 'react-router-dom';
+import { BsFillSuitHeartFill } from 'react-icons/bs';
 
 import {
   addToFavourites,
@@ -15,6 +16,7 @@ import useHttp from '../../hooks/use-http';
 import { useAuth } from '../../context/AuthContext/AuthContext';
 
 const Question = (props) => {
+  const [reload, setReload] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const { getLoggedInUserData, userDetails } = useAuth();
 
@@ -38,7 +40,7 @@ const Question = (props) => {
 
   useEffect(() => {
     getLoggedInUserData();
-  }, [getLoggedInUserData]);
+  }, [getLoggedInUserData, reload]);
   // console.log(userDetails.user.favourites);
 
   if (status === 'pending') {
@@ -54,14 +56,18 @@ const Question = (props) => {
   }
   const questionId = props.id;
 
-  const addToFavouritesHandler = () => {
+  const addToFavouritesHandler = (event) => {
     console.log('Add to Favourites');
     sendRequest({ questionId: questionId });
+    getLoggedInUserData();
+    setReload((reload) => !reload);
   };
 
-  const removeFavouritesHandler = () => {
+  const removeFavouritesHandler = (event) => {
     console.log('Remove From Favourites');
     sendRequest({ questionId: questionId });
+    getLoggedInUserData();
+    setReload((reload) => !reload);
   };
 
   const removeQuestionHandler = async () => {
@@ -70,7 +76,7 @@ const Question = (props) => {
     await sendRemoveRequest(questionId);
     setRedirect(true);
   };
-  console.log(userDetails);
+  // console.log(props.likes);
   return redirect ? (
     <Redirect to={'/questions'} />
   ) : (
@@ -81,6 +87,12 @@ const Question = (props) => {
     >
       {props.isAnswer && (
         <VoteContainer answerId={questionId} votes={props.votes} />
+      )}
+      {!props.isAnswer && (
+        <div className={classes.likeContainer}>
+          <p>{props.likes}</p>
+          <BsFillSuitHeartFill />
+        </div>
       )}
       <div className={classes.statistics}></div>
       <div className={classes.question}>{props.children}</div>

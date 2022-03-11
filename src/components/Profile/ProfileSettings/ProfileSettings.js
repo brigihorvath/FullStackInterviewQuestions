@@ -44,8 +44,8 @@ const ProfileSettings = (props) => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(inputState);
-    console.log(userDetails);
+    // console.log(inputState);
+    // console.log(userDetails);
     try {
       const { data } = await updateUser(inputState);
       getLoggedInUserData();
